@@ -11,7 +11,7 @@
     # set spacevim theme. by default colorscheme layer is not loaded,
     # if you want to use more colorscheme, please load the colorscheme
     # layer
-    colorscheme = "Material"
+    colorscheme = "gruvbox"
     colorscheme_bg = "dark"
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
@@ -39,10 +39,6 @@ name = 'shell'
 default_position = 'top'
 default_height = 30
 
-[[custom_plugins]]
-  name = "rakr/vim-one"
-  merged = 0
-
 # PHP Support
 [[layers]]
 name = "lang#php"
@@ -54,3 +50,16 @@ name = "lang#javascript"
 auto_fix = true
 enable_flow_syntax = true
 # End Javascript Support
+
+# HTML Support
+[[layers]]
+  name = "lang#html"
+# End HTML Support
+
+# Theme
+[[custom_plugins]]
+  name = "liuchengxu/space-vim-dark"
+  merged = 0
+
+[[layers]]
+  name = "gtags"
