@@ -63,3 +63,6 @@ enable_flow_syntax = true
 
 [[layers]]
   name = "gtags"
+
+[[layers]]
+  name = "fzf"
