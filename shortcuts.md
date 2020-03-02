@@ -13,3 +13,12 @@ spc + b + n
 
 # go to previous buffer
 spc + b + p
+
+# Open FZF
+ctrl + p
+
+# Comment Line
+spc + c + l
+
+# Comment paragraph
+spc + c + p
