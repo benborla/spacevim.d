@@ -1,3 +1,10 @@
+function! IPhpInsertUse()
+  call PhpInsertUse()
+  call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+
 function! myspacevim#before() abort
   set t_ZH=^[[3m
   set t_ZR=^[[23m
@@ -36,10 +43,21 @@ function! myspacevim#before() abort
   autocmd VimEnter * highlight Comment cterm=italic gui=italic
   autocmd VimEnter * highlight Visual guifg=black guibg=Yellow gui=none
 
-  # disable tabline buffer
+  " disable tabline buffer
   let g:airline#extensions#tabline#enabled = 0
   let g:ackprg = 'ag --nogroup --nocolor --column'
 
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#show_buffers = 0
+  let g:airline#extensions#tabline#show_tabs = 1
+
+let g:spacevim_custom_plugins = [
+            \ ['arnaud-lb/vim-php-namespace', {'merged' : 0}],
+            \ ['gcmt/taboo.vim', {'merged' : 0}]
+            \ ]
+
+ set guioptions-=e
+ set sessionoptions+=tabpages,globals
 endfunction
 
 
