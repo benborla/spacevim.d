@@ -78,3 +78,21 @@ function! myspacevim#after() abort
   let g:neoformat_enabled_javascript = ['npxprettier']
   
 endfunction
+
+
+function! Whitespace()
+    if !exists('b:ws')
+        highlight Conceal ctermbg=NONE ctermfg=240 cterm=NONE guibg=NONE guifg=#585858 gui=NONE
+        highlight link Whitespace Conceal
+        let b:ws = 1
+    endif
+
+    syntax clear Whitespace
+    syntax match Whitespace / / containedin=ALL conceal cchar=·
+    setlocal conceallevel=2 concealcursor=c
+endfunction
+
+augroup Whitespace
+    autocmd!
+    autocmd BufEnter,WinEnter * call Whitespace()
+augroup END

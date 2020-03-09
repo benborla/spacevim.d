@@ -27,6 +27,8 @@
     bootstrap_before = "myspacevim#before"
     bootstrap_after = "myspacevim#after"
     guifont = "SauceCodePro Nerd Font Mono:h13"
+    default_indent = 4
+    expand_tab = false
 
 # Enable autocomplete layer
 [[layers]]
