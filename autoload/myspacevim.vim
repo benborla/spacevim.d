@@ -53,7 +53,9 @@ function! myspacevim#before() abort
 
 let g:spacevim_custom_plugins = [
             \ ['arnaud-lb/vim-php-namespace', {'merged' : 0}],
-            \ ['gcmt/taboo.vim', {'merged' : 0}]
+            \ ['gcmt/taboo.vim', {'merged' : 0}],
+            \ ['beyondwords/vim-twig', {'merged' : 0}],
+            \ ['jwalton512/vim-blade', {'merged' : 0}]
             \ ]
 
  set guioptions-=e
