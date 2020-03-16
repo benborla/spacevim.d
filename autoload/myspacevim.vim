@@ -42,14 +42,8 @@ function! myspacevim#before() abort
   nnoremap k gk
   autocmd VimEnter * highlight Comment cterm=italic gui=italic
   autocmd VimEnter * highlight Visual guifg=black guibg=Yellow gui=none
+  autocmd VimEnter * set tabline=%!MyTabLine()  " custom tab pages line
 
-  " disable tabline buffer
-  let g:airline#extensions#tabline#enabled = 0
-  let g:ackprg = 'ag --nogroup --nocolor --column'
-
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#show_buffers = 0
-  let g:airline#extensions#tabline#show_tabs = 1
 
 let g:spacevim_custom_plugins = [
             \ ['arnaud-lb/vim-php-namespace', {'merged' : 0}],
@@ -62,6 +56,26 @@ let g:spacevim_custom_plugins = [
 
  set guioptions-=e
  set sessionoptions+=tabpages,globals
+
+ " tabline
+let g:airline_theme='gruvbox'                                                                                                             
+let g:airline_powerline_fonts = 1                                                                                                         
+let g:airline_section_b = '%{getcwd()}' " in section B of the status line display the CWD                                                 
+
+"TABLINE:                                                                                                                                 
+let g:airline#extensions#tabline#enabled = 1           " enable airline tabline                                                           
+let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline                                            
+let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
+let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)      
+let g:airline#extensions#tabline#fnamemod = ':t'       " disable file paths in the tab                                                    
+let g:airline#extensions#tabline#show_tab_count = 0    " dont show tab numbers on the right                                                           
+let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline                                                 
+let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline                                  
+let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline               
+let g:airline#extensions#tabline#show_tab_nr = 1       " disable tab numbers                                                              
+let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_powerline_fonts = 1
 endfunction
 
 
@@ -98,3 +112,50 @@ augroup Whitespace
     autocmd!
     autocmd BufEnter,WinEnter * call Whitespace()
 augroup END
+
+
+" Rename tabs to show tab number.
+" (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
+if exists("+showtabline")
+    function! MyTabLine()
+        let s = ''
+        let wn = ''
+        let t = tabpagenr()
+        let i = 1
+        while i <= tabpagenr('$')
+            let buflist = tabpagebuflist(i)
+            let winnr = tabpagewinnr(i)
+            let s .= '%' . i . 'T'
+            let s .= (i == t ? '%1*' : '%2*')
+            let s .= ' '
+            let wn = tabpagewinnr(i,'$')
+
+            let s .= '%#TabNum#'
+            let s .= i
+            " let s .= '%*'
+            let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+            let bufnr = buflist[winnr - 1]
+            let file = bufname(bufnr)
+            let buftype = getbufvar(bufnr, 'buftype')
+            if buftype == 'nofile'
+                if file =~ '\/.'
+                    let file = substitute(file, '.*\/\ze.', '', '')
+                endif
+            else
+                let file = fnamemodify(file, ':p:t')
+            endif
+            if file == ''
+                let file = '[No Name]'
+            endif
+            let s .= ' ' . file . ' '
+            let i = i + 1
+        endwhile
+        let s .= '%T%#TabLineFill#%='
+        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+        return s
+    endfunction
+    set stal=2
+    set tabline=%!MyTabLine()
+    set showtabline=1
+    highlight link TabNum Special
+endif
