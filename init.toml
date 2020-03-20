@@ -37,6 +37,10 @@ default_height = 30
     name = "lilydjwg/colorizer"
     merged = false
 
+[[custom_plugins]]
+    name = "Xuyuanp/nerdtree-git-plugin"
+    merged = false
+
 [[layers]]
   name = "checkers"
 
@@ -47,7 +51,23 @@ default_height = 30
 
 [[layers]]
   name = "lang#php"
+
+[[custom_plugins]]
+    name = "arnaud-lb/vim-php-namespace"
+    merged = false
   
+[[custom_plugins]]
+    name = "gcmt/taboo.vim"
+    merged = false
+
+[[custom_plugins]]
+    name = "beyondwords/vim-twig"
+    merged = false
+
+[[custom_plugins]]
+    name = "jwalton512/vim-blade"
+    merged = false
+
 [[layers]]
   name = "ui"
   enable_sidebar = true
