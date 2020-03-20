@@ -1,3 +1,8 @@
+* If you encounter this error: deoplete requires msgpack 1.0.0+`
+```
+python3 -mpip install --user -U msgpack
+```
+
 # Find File in Project Root Directory
 spc + p + f
 // Use arrow keys to navigate
