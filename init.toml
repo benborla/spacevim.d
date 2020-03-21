@@ -21,6 +21,7 @@
   bootstrap_after = "myspacevim#after"
   enable_ale = true
   enable_neomake = false
+  autocomplete_method = "coc"
 
 
 # Enable autocomplete layer
@@ -80,3 +81,17 @@ name = "fzf"
 
 [[layers]]
 name = "lang#html"
+
+[[layers]]
+  name = "lsp"
+  filetypes = [
+    "php",
+    "javascript"
+  ]
+
+[[custom_plugins]]
+name = "Rican7/php-doc-modded"
+merged = false
+
+[[layers]]
+name = "lang#extra"
