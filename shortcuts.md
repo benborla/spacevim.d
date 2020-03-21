@@ -1,8 +1,14 @@
 * If you encounter this error: deoplete requires msgpack 1.0.0+`
-```
+```bash
 python3 -mpip install --user -U msgpack
 ```
-
+* jshint: 'import' is only available in ES6 (use 'esversion: 6') *
+Create a `.jshintrc` in the project directory
+```json
+{
+  "esversion": 6
+}
+```
 # Find File in Project Root Directory
 spc + p + f
 // Use arrow keys to navigate
