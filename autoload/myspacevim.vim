@@ -6,7 +6,21 @@ endfunction
 function! IPhpExpandClass()
     call PhpExpandClass()
     call feedkeys('a', 'n')
-  endfunction
+endfunction
+
+function! UpdatePhpDocIfExists()
+    normal! k
+    if getline('.') =~ '/'
+        normal! V%d
+    else
+        normal! j
+    endif
+    call PhpDocSingle()
+    normal! k^%k$
+    if getline('.') =~ ';'
+        exe "normal! $svoid"
+    endif
+endfunction
 
 function! myspacevim#before() abort
 
@@ -77,9 +91,11 @@ function! myspacevim#before() abort
   let g:ale_set_highlights = 0
   let g:ale_echo_cursor = 1
   let g:ale_fix_on_save = 1
+
+  let g:pdv_template_dir = $HOME ."/.SpaceVim.d/snip"
+  nnoremap <buffer> ;w :call pdv#DocumentCurrentLine()<CR>
+  nnoremap <leader>h :call UpdatePhpDocIfExists()<CR>
 endfunction
 
-
 function! myspacevim#after() abort
-  
 endfunction
