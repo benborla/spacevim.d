@@ -95,6 +95,7 @@ function! myspacevim#before() abort
   let g:pdv_template_dir = $HOME ."/.SpaceVim.d/snip"
   nnoremap <buffer> ;w :call pdv#DocumentCurrentLine()<CR>
   nnoremap <leader>h :call UpdatePhpDocIfExists()<CR>
+  let g:spacevim_enable_clap = 1
 endfunction
 
 function! myspacevim#after() abort
