@@ -40,6 +40,11 @@ function! myspacevim#before() abort
   let g:airline#extensions#branch#enabled = 1
   let g:airline#extensions#hunks#enabled = 1
   let g:airline#extensions#whitespace#enabled = 0
+  " Just show the filename (no path) in the tab
+  let g:airline#extensions#tabline#fnamemod = ':t'
+  let g:airline#extensions#tabline#show_tab_nr = 1
+  let g:airline#extensions#tabline#show_tab_type = 2
+  let g:airline#extensions#tabline#tabs_label = 't'
 
   set t_ZH=^[[3m
   set t_ZR=^[[23m
