@@ -96,8 +96,8 @@ name = "lang#html"
 name = "Rican7/php-doc-modded"
 merged = false
 
-[[custom_plugins]]
-name = "hzchirs/vim-material"
-
 [[layers]]
 name = "lang#extra"
+
+[[custom_plugins]]
+name = "hzchirs/vim-material"
