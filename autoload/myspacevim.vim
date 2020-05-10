@@ -24,6 +24,10 @@ endfunction
 
 function! myspacevim#before() abort
 
+  " Material theme
+  let g:material_style='oceanic'
+  let g:airline_theme='material'
+
   set t_ZH=^[[3m
   set t_ZR=^[[23m
 
