@@ -24,6 +24,11 @@ endfunction
 
 function! myspacevim#before() abort
 
+  " Disable backups and extra file creation
+  set nowritebackup
+  set noswapfile
+  set nobackup
+
   " Material theme
   let g:material_style='oceanic'
   let g:airline_theme='material'
