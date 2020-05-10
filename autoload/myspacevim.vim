@@ -29,6 +29,18 @@ function! myspacevim#before() abort
   let g:airline_theme='material'
   autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 
+  " Use Vim Airline for Tabline and Statusline
+  call SpaceVim#layers#disable('core#statusline')
+  call SpaceVim#layers#disable('core#tabline')
+  "! Disable bookmark for airline as it is causing an error
+  let g:airline#extensions#bookmark#enabled = 0
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#show_buffers = 0
+  let g:airline#extensions#tabline#show_tabs = 1
+  let g:airline#extensions#branch#enabled = 1
+  let g:airline#extensions#hunks#enabled = 1
+  let g:airline#extensions#whitespace#enabled = 0
+
   set t_ZH=^[[3m
   set t_ZR=^[[23m
 
