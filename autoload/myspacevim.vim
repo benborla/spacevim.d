@@ -114,7 +114,7 @@ function! myspacevim#before() abort
   let g:neoformat_enabled_javascript = ['npxprettier']
 
   let b:ale_fixers = {'javascript': ['prettier', 'standard'], 'php': ['php', 'phpcs']}
-  let b:ale_linters = {'php': ['php', 'phpcs']}
+  let b:ale_linters = {'php': ['php', 'phpcs'], 'javascript': ['eslint']}
   let g:ale_set_highlights = 0
   let g:ale_echo_cursor = 1
   let g:ale_fix_on_save = 1
