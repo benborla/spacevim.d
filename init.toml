@@ -101,3 +101,9 @@ name = "lang#extra"
 
 [[custom_plugins]]
 name = "hzchirs/vim-material"
+
+[[custom_plugins]]
+name = "vim-airline/vim-airline"
+
+[[custom_plugins]]
+name = "vim-airline/vim-airline-themes"

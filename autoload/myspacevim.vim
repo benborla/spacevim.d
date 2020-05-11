@@ -31,7 +31,7 @@ function! myspacevim#before() abort
 
   " Material theme
   let g:material_style='oceanic'
-  let g:airline_theme='material'
+  " let g:airline_theme='material'
   autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 
   " Use Vim Airline for Tabline and Statusline
