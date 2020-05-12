@@ -30,9 +30,13 @@ function! myspacevim#before() abort
   set nobackup
 
   " Material theme
+  " Background should be set to #050715
   let g:material_style='oceanic'
   " let g:airline_theme='material'
   autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+  " syntax color scheme modifiers
+  autocmd VimEnter * highlight String guifg=#80cbc4 guibg=None
+  autocmd VimEnter * highlight Normal guifg=#ffb62c guibg=None
 
   " Use Vim Airline for Tabline and Statusline
   call SpaceVim#layers#disable('core#statusline')
@@ -71,6 +75,8 @@ function! myspacevim#before() abort
   nnoremap nww <ESC>:w!<CR>
 
   nnoremap q <ESC>:q!<CR>
+  noremap nt <ESC>:tabnew<CR>
+  noremap nT <ESC>:tabnew#<CR>
 
   cnoremap ii <ESC>
 
@@ -88,7 +94,7 @@ function! myspacevim#before() abort
   set guioptions-=e
   set sessionoptions+=tabpages,globals
 
-  autocmd VimEnter * highlight LineNr guifg=#ffffff
+  autocmd VimEnter * highlight LineNr guifg=#3d7184
   autocmd VimEnter * highlight CursorLine term=bold cterm=bold guibg=#2F4F4F
   autocmd VimEnter * highlight ColorColumn ctermbg=lightgrey guibg=#8B0000
   autocmd VimEnter * highlight Visual guifg=black guibg=Yellow gui=none
