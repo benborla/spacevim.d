@@ -71,9 +71,9 @@ function! myspacevim#before() abort
   nnoremap nww <ESC>:w!<CR>
 
   nnoremap q <ESC>:q!<CR>
+  nnoremap qq <ESC>:q!<CR>
 
   cnoremap ii <ESC>
-
   noremap <Up> <NOP>
   noremap <Down> <NOP>
   noremap <Left> <NOP>
@@ -123,6 +123,9 @@ function! myspacevim#before() abort
   nnoremap <buffer> ;w :call pdv#DocumentCurrentLine()<CR>
   nnoremap <leader>h :call UpdatePhpDocIfExists()<CR>
   let g:spacevim_enable_clap = 1
+
+  " emmet, press ,, to use emmet
+  let g:user_emmet_leader_key=','
 endfunction
 
 function! myspacevim#after() abort
