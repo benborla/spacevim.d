@@ -118,8 +118,12 @@ function! myspacevim#before() abort
   let g:neomake_javascript_jsx_enabled_makers = ['eslint']
   let g:neoformat_enabled_javascript = ['npxprettier']
 
-  let g:ale_fixers = {'javascript': ['prettier', 'standard'], 'php': ['php', 'phpcs']}
-  let g:ale_linters = {'php': ['php', 'phpcs'], 'javascript': ['standard']}
+  let g:ale_fixers = {'javascript': ['eslint']}
+  let g:ale_linters = {'javascript': ['standard']}
+
+  let b:ale_fixers = {'php': ['php', 'phpcs']}
+  let b:ale_linters = {'php': ['php', 'phpcs']}
+
   let g:ale_set_highlights = 0
   let g:ale_echo_cursor = 1
   let g:ale_fix_on_save = 1
@@ -131,9 +135,10 @@ function! myspacevim#before() abort
 
   " emmet, press ,, to use emmet
   let g:user_emmet_leader_key=','
+
+  " VIM-JSX-PRETTY
+  let g:vim_jsx_pretty_highlight_close_tag = 1
 endfunction
-
-
 
 function! myspacevim#after() abort
 endfunction
