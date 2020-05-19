@@ -23,6 +23,7 @@ function! UpdatePhpDocIfExists()
 endfunction
 
 function! myspacevim#before() abort
+  " print debug info :SPDebugInfo!
 
   " Disable backups and extra file creation
   set nowritebackup
@@ -118,8 +119,8 @@ function! myspacevim#before() abort
   let g:neomake_javascript_jsx_enabled_makers = ['eslint']
   let g:neoformat_enabled_javascript = ['npxprettier']
 
-  let b:ale_fixers = {'javascript': ['prettier', 'standard'], 'php': ['php', 'phpcs']}
-  let b:ale_linters = {'php': ['php', 'phpcs'], 'javascript': ['eslint']}
+  let g:ale_fixers = {'javascript': ['prettier', 'standard'], 'php': ['php', 'phpcs']}
+  let g:ale_linters = {'php': ['php', 'phpcs'], 'javascript': ['standard']}
   let g:ale_set_highlights = 0
   let g:ale_echo_cursor = 1
   let g:ale_fix_on_save = 1
@@ -131,6 +132,10 @@ function! myspacevim#before() abort
 
   " emmet, press ,, to use emmet
   let g:user_emmet_leader_key=','
+
+  " this requires npm install -g standard-format
+  noremap <leader>st <ESC>:!export formatcontent=$(standard-format $(echo %)) && echo $formatcontent > $(echo %) && export formatcontent=''<CR>
+  au FileType javascript.jsx setlocal sw=2 sts=2 et
 endfunction
 
 function! myspacevim#after() abort
