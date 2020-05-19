@@ -23,22 +23,6 @@ function! UpdatePhpDocIfExists()
 endfunction
 
 function! myspacevim#before() abort
-  " print debug info :SPDebugInfo!
-
-  " Disable backups and extra file creation
-  set nowritebackup
-  set noswapfile
-  set nobackup
-
-  " Material theme
-  " Background should be set to #050715
-  let g:material_style='oceanic'
-  " let g:airline_theme='material'
-  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-  " syntax color scheme modifiers
-  autocmd VimEnter * highlight String guifg=#80cbc4 guibg=None
-  autocmd VimEnter * highlight Normal guifg=#ffb62c guibg=None
-
   " Use Vim Airline for Tabline and Statusline
   call SpaceVim#layers#disable('core#statusline')
   call SpaceVim#layers#disable('core#tabline')
@@ -56,6 +40,21 @@ function! myspacevim#before() abort
   let g:airline#extensions#tabline#show_tab_type = 2
   let g:airline#extensions#tabline#tabs_label = 't'
 
+  " Disable backups and extra file creation
+  set nowritebackup
+  set noswapfile
+  set nobackup
+
+  " Material theme
+  " Background should be set to #050715
+  let g:material_style='oceanic'
+  " let g:airline_theme='material'
+  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+  " syntax color scheme modifiers
+  autocmd VimEnter * highlight String guifg=#80cbc4 guibg=None
+  autocmd VimEnter * highlight Normal guifg=#ffb62c guibg=None
+
+  " Editor settings
   set t_ZH=^[[3m
   set t_ZR=^[[23m
 
@@ -132,11 +131,9 @@ function! myspacevim#before() abort
 
   " emmet, press ,, to use emmet
   let g:user_emmet_leader_key=','
-
-  " this requires npm install -g standard-format
-  noremap <leader>st <ESC>:!export formatcontent=$(standard-format $(echo %)) && echo $formatcontent > $(echo %) && export formatcontent=''<CR>
-  au FileType javascript.jsx setlocal sw=2 sts=2 et
 endfunction
+
+
 
 function! myspacevim#after() abort
 endfunction

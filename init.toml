@@ -73,7 +73,7 @@ name = "pangloss/vim-javascript"
 merged = false
     
 [[custom_plugins]]
-name = "mxw/vim-jsx"
+name = "maxmellon/vim-jsx-pretty"
 merged = false
 
 [[layers]]
