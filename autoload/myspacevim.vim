@@ -118,7 +118,7 @@ function! myspacevim#before() abort
   let g:neomake_javascript_jsx_enabled_makers = ['eslint']
   let g:neoformat_enabled_javascript = ['npxprettier']
 
-  let g:ale_fixers = {'javascript': ['eslint']}
+  let g:ale_fixers = {'javascript': ['standard']}
   let g:ale_linters = {'javascript': ['standard']}
 
   let b:ale_fixers = {'php': ['php', 'phpcs']}
