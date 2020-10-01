@@ -138,6 +138,11 @@ function! myspacevim#before() abort
 
   " VIM-JSX-PRETTY
   let g:vim_jsx_pretty_highlight_close_tag = 1
+
+  " resize file explorer
+  nnoremap a{ <ESC>:vertical resize +20<CR>
+  nnoremap a} <ESC>:vertical resize -20<CR>
+  
 endfunction
 
 function! myspacevim#after() abort
