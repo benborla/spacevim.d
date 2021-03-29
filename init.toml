@@ -86,6 +86,9 @@ name = "fzf"
 name = "lang#html"
 
 [[layers]]
+name = "lang#vue"
+
+[[layers]]
   name = "lsp"
   filetypes = [
     "php",
@@ -110,3 +113,9 @@ name = "lang#html"
 
 [[layers]]
   name = "checkers"
+
+[[custom_plugins]]
+  name = "Shougo/vimproc.vim"
+
+[[custom_plugins]]
+  name = "stephpy/vim-php-cs-fixer"
