@@ -23,20 +23,17 @@ function! UpdatePhpDocIfExists()
 endfunction
 
 function! myspacevim#before() abort
+  set t_ZH=^[[3m
+  set t_ZR=^[[23m
+	" autocmd FileType html set shiftwidth=2 softtabstop=2
+	" autocmd FileType js set shiftwidth=2 softtabstop=2
+	" autocmd FileType css set shiftwidth=4 softtabstop=4
+	" autocmd FileType php set shiftwidth=4 softtabstop=4
+	" autocmd FileType inc set shiftwidth=4 softtabstop=4
 
-  " Disable backups and extra file creation
-  set nowritebackup
-  set noswapfile
-  set nobackup
+  autocmd BufNewFile,BufRead *.inc set syntax=php
 
-  " Material theme
-  " Background should be set to #050715
-  let g:material_style='oceanic'
-  " let g:airline_theme='material'
-  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-  " syntax color scheme modifiers
-  autocmd VimEnter * highlight String guifg=#80cbc4 guibg=None
-  autocmd VimEnter * highlight Normal guifg=#ffb62c guibg=None
+	let g:python_host_prog = '/usr/local/bin/python3.9'
 
   " Use Vim Airline for Tabline and Statusline
   call SpaceVim#layers#disable('core#statusline')
@@ -55,6 +52,21 @@ function! myspacevim#before() abort
   let g:airline#extensions#tabline#show_tab_type = 2
   let g:airline#extensions#tabline#tabs_label = 't'
 
+  " Disable backups and extra file creation
+  set nowritebackup
+  set noswapfile
+  set nobackup
+
+  " Material theme
+  " Background should be set to #050715
+  let g:material_style='oceanic'
+  " let g:airline_theme='material'
+  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+  " syntax color scheme modifiers
+  autocmd VimEnter * highlight String guifg=#80cbc4 guibg=None
+  autocmd VimEnter * highlight Normal guifg=#ffb62c guibg=None
+
+  " Editor settings
   set t_ZH=^[[3m
   set t_ZR=^[[23m
 
@@ -118,8 +130,12 @@ function! myspacevim#before() abort
   let g:neomake_javascript_jsx_enabled_makers = ['eslint']
   let g:neoformat_enabled_javascript = ['npxprettier']
 
-  let b:ale_fixers = {'javascript': ['prettier', 'standard'], 'php': ['php', 'phpcs']}
-  let b:ale_linters = {'php': ['php', 'phpcs'], 'javascript': ['eslint']}
+  let g:ale_fixers = {'javascript': ['standard', 'eslint']}
+  let g:ale_linters = {'javascript': ['standard', 'eslint']}
+
+  let b:ale_fixers = {'php': ['php', 'phpcs']}
+  let b:ale_linters = {'php': ['php', 'phpcs']}
+
   let g:ale_set_highlights = 0
   let g:ale_echo_cursor = 1
   let g:ale_fix_on_save = 1
@@ -131,6 +147,74 @@ function! myspacevim#before() abort
 
   " emmet, press ,, to use emmet
   let g:user_emmet_leader_key=','
+
+  " VIM-JSX-PRETTY
+  let g:vim_jsx_pretty_highlight_close_tag = 1
+
+  " resize file explorer
+  nnoremap a{ <ESC>:vertical resize +20<CR>
+  nnoremap a} <ESC>:vertical resize -20<CR>
+
+
+  " PHP CS
+    " If php-cs-fixer is in $PATH, you don't need to define line below
+    " let g:php_cs_fixer_path = "~/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
+
+    " If you use php-cs-fixer version 1.x
+    let g:php_cs_fixer_level = "symfony"                   " options: --level (default:symfony)
+    let g:php_cs_fixer_config = "default"                  " options: --config
+    " If you want to define specific fixers:
+    "let g:php_cs_fixer_fixers_list = "linefeed,short_tag" " options: --fixers
+    "let g:php_cs_fixer_config_file = '.php_cs'            " options: --config-file
+    " End of php-cs-fixer version 1 config params
+
+    " If you use php-cs-fixer version 2.x
+    let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
+    "let g:php_cs_fixer_cache = ".php_cs.cache" " options: --cache-file
+    "let g:php_cs_fixer_config_file = '.php_cs' " options: --config
+    " End of php-cs-fixer version 2 config params
+
+    let g:php_cs_fixer_php_path = "php"               " Path to PHP
+    let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
+    let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+    let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+  " -- END PHP CS --
+
+  "  Telescope
+  " Find files using Telescope command-line sugar.
+	nnoremap ;ff <cmd>Telescope find_files<cr>
+	nnoremap ;gg <cmd>:Grepper<cr>
+	nnoremap ;md <cmd>:Glow<cr>
+	nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+	nnoremap <leader>fb <cmd>Telescope buffers<cr>
+	nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+	" Using lua functions
+	nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+	nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+	nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+	nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+	" nvim-hlslens
+	noremap <silent> n <Cmd>execute('normal! ' . v:count1 . 'n')<CR>
+				\<Cmd>lua require('hlslens').start()<CR>
+	noremap <silent> N <Cmd>execute('normal! ' . v:count1 . 'N')<CR>
+				\<Cmd>lua require('hlslens').start()<CR>
+	noremap * *<Cmd>lua require('hlslens').start()<CR>
+	noremap # #<Cmd>lua require('hlslens').start()<CR>
+	noremap g* g*<Cmd>lua require('hlslens').start()<CR>
+	noremap g# g#<Cmd>lua require('hlslens').start()<CR>
+
+	" highlight default link HlSearchLensCur IncSearch
+	" highlight default link HlSearchLens WildMenu
+	" highlight default link HlSearchCur IncSearch
+
+	" use : instead of <Cmd>
+	nnoremap <silent> <leader>l :nohlsearch<CR>
+
+	" for COC close dialog 
+	" nmap <Esc> :call coc#float#close_all() <CR>
+	let g:UltiSnipsEditSplit="vertical"
 endfunction
 
 function! myspacevim#after() abort
