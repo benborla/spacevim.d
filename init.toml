@@ -3,6 +3,7 @@
   # set spacevim theme. by default colorscheme layer is not loaded,
   # if you want to use more colorscheme, please load the colorscheme
   # layer
+	automatic_update = true
   colorscheme = "vim-material"
   colorscheme_bg = "dark"
   # Disable guicolors in basic mode, many terminal do not support 24bit
@@ -21,8 +22,12 @@
   bootstrap_after = "myspacevim#after"
   enable_ale = true
   enable_neomake = false
-  autocomplete_method = "coc"
-
+  # autocomplete_method = "coc"
+  autocomplete_method = "deoplete"
+  default_indent = 2
+  expand_tab = false
+  filemanager = "defx"
+	snippet_engine = "ultisnips"
 
 # Enable autocomplete layer
 [[layers]]
@@ -47,8 +52,8 @@ merged = false
 
 [[layers]]
 name = "lang#javascript"
-auto_fix = true
-enable_flow_syntax = true
+auto_fix = false
+enable_flow_syntax = false
 
 [[layers]]
 name = "lang#php"
@@ -73,7 +78,7 @@ name = "pangloss/vim-javascript"
 merged = false
     
 [[custom_plugins]]
-name = "mxw/vim-jsx"
+name = "maxmellon/vim-jsx-pretty"
 merged = false
 
 [[layers]]
@@ -86,11 +91,15 @@ name = "fzf"
 name = "lang#html"
 
 [[layers]]
-  name = "lsp"
-  filetypes = [
-    "php",
-    "javascript"
-  ]
+name = "lang#vue"
+
+[[layers]]
+name = "lsp"
+enable = true
+filetypes = [
+  "php",
+  "javascript"
+]
 
 [[custom_plugins]]
   name = "Rican7/php-doc-modded"
@@ -109,4 +118,46 @@ name = "lang#html"
   name = "vim-airline/vim-airline-themes"
 
 [[layers]]
-  name = "checkers"
+	name = "checkers"
+
+[[custom_plugins]]
+  name = "Shougo/vimproc.vim"
+
+[[custom_plugins]]
+  name = "stephpy/vim-php-cs-fixer"
+
+[[custom_plugins]]
+  name = "nvim-lua/popup.nvim"
+
+[[custom_plugins]]
+  name = "nvim-lua/plenary.nvim"
+
+[[custom_plugins]]
+  name = "nvim-telescope/telescope.nvim"
+
+[[custom_plugins]]
+  name = "kyazdani42/nvim-web-devicons"
+
+# [[custom_plugins]]
+  # name = "kevinhwang91/nvim-hlslens"
+
+[[custom_plugins]]
+  name = "npxbr/glow.nvim"
+
+[[custom_plugins]]
+  name = "npxbr/glow.nvim"
+
+[[custom_plugins]]
+  name = "dense-analysis/ale"
+
+[[layers]]
+  name = "lang#java"
+
+[[layers]]
+  name = "lang#dart"
+
+[[layers]]
+  name = "lang#markdown"
+
+[[layers]]
+  name = "debug"
