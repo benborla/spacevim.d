@@ -1,9 +1,16 @@
+#=============================================================================
+# dark_powered.toml --- dark powered configuration example for SpaceVim
+# Copyright (c) 2016-2021 Wang Shidong & Contributors
+# Author: Wang Shidong < wsdjeg at 163.com >
+# URL: https://spacevim.org
+# License: GPLv3
+#=============================================================================
+
 # All SpaceVim option below [option] section
 [options]
   # set spacevim theme. by default colorscheme layer is not loaded,
   # if you want to use more colorscheme, please load the colorscheme
   # layer
-	automatic_update = true
   colorscheme = "vim-material"
   colorscheme_bg = "dark"
   # Disable guicolors in basic mode, many terminal do not support 24bit
@@ -12,101 +19,69 @@
   # Disable statusline separator, if you want to use other value, please
   # install nerd fonts
   statusline_separator = "arrow"
-  statusline_inactive_separator = "arrow"
+  statusline_iseparator = "arrow"
   buffer_index_type = 4
   enable_tabline_filetype_icon = true
-  enable_statusline_mode = true
-  guifont = "SauceCodePro Nerd Font Mono:h11"
+  enable_statusline_mode = false
+  
+  # recently added 07-18-2022
+  enable_sidebar = true
+  enable_cursorword = false
+
   filetree_direction = "left"
+  filemanager = "defx"
   bootstrap_before = "myspacevim#before"
   bootstrap_after = "myspacevim#after"
+  autocomplete_method = "deoplete"
+  
   enable_ale = true
   enable_neomake = false
-  # autocomplete_method = "coc"
-  autocomplete_method = "deoplete"
-  default_indent = 2
-  expand_tab = false
-  filemanager = "defx"
-	snippet_engine = "ultisnips"
 
 # Enable autocomplete layer
 [[layers]]
-name = 'autocomplete'
-auto-completion-return-key-behavior = "complete"
-auto-completion-tab-key-behavior = "smart"
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "complete"
+  auto_completion_tab_key_behavior = "smart"
 
 [[layers]]
-name = "git"
+  name = 'shell'
+  default_position = 'top'
+  default_height = 30
 
 [[layers]]
-name = 'shell'
-default_position = 'top'
-default_height = 30
+  name = "lang#php"
 
 [[layers]]
-name = 'fzf'
+  name = 'gtags'
+
+[[layers]]
+  name = "git"
 
 [[custom_plugins]]
-name = "lilydjwg/colorizer"
-merged = false
-
-[[layers]]
-name = "lang#javascript"
-auto_fix = false
-enable_flow_syntax = false
-
-[[layers]]
-name = "lang#php"
+  name = "lilydjwg/colorizer"
+  merged = false
 
 [[custom_plugins]]
-name = "arnaud-lb/vim-php-namespace"
-merged = false
-
-[[custom_plugins]]
-name = "beyondwords/vim-twig"
-merged = false
-
-[[custom_plugins]]
-name = "jwalton512/vim-blade"
-merged = false
-
-[[layers]]
-name = "tools"
-
-[[custom_plugins]]
-name = "pangloss/vim-javascript"
-merged = false
-    
-[[custom_plugins]]
-name = "maxmellon/vim-jsx-pretty"
-merged = false
-
-[[layers]]
-name = "gtags"
-
-[[layers]]
-name = "fzf"    
-
-[[layers]]
-name = "lang#html"
-
-[[layers]]
-name = "lang#vue"
-
-[[layers]]
-name = "lsp"
-enable = true
-filetypes = [
-  "php",
-  "javascript"
-]
-
-[[custom_plugins]]
-  name = "Rican7/php-doc-modded"
+  name = "arnaud-lb/vim-php-namespace"
   merged = false
 
 [[layers]]
+  name = "tools"
+
+[[layers]]
+  name = "fzf"  
+  
+[[layers]]
+  name = "lsp"
+  enable = true
+  filetypes = [
+    "php",
+    "javascript"
+  ]
+
+[[layers]]
   name = "lang#extra"
+  
 
 [[custom_plugins]]
   name = "hzchirs/vim-material"
@@ -131,33 +106,40 @@ filetypes = [
 
 [[custom_plugins]]
   name = "nvim-lua/plenary.nvim"
-
-[[custom_plugins]]
-  name = "nvim-telescope/telescope.nvim"
+  
+# [[custom_plugins]]
+  # name = "nvim-telescope/telescope.nvim"
 
 [[custom_plugins]]
   name = "kyazdani42/nvim-web-devicons"
 
 # [[custom_plugins]]
-  # name = "kevinhwang91/nvim-hlslens"
-
-[[custom_plugins]]
-  name = "npxbr/glow.nvim"
-
-[[custom_plugins]]
-  name = "npxbr/glow.nvim"
-
+  # name = "npxbr/glow.nvim"
+  
 [[custom_plugins]]
   name = "dense-analysis/ale"
 
 [[layers]]
-  name = "lang#java"
-
-[[layers]]
-  name = "lang#dart"
-
-[[layers]]
   name = "lang#markdown"
 
+# [[layers]]
+  # name = "debug"
+
 [[layers]]
-  name = "debug"
+  name = "lang#javascript"
+
+[[custom_plugins]]
+  name = "nelsyeung/twig.vim"
+
+[[custom_plugins]]
+  name = "wakatime/vim-wakatime"
+
+[[custom_plugins]]
+  name = "kevinhwang91/nvim-hlslens"
+
+[[custom_plugins]]
+  name = "neovim/nvim-lspconfig"
+
+[[custom_plugins]]
+  name = "kabouzeid/nvim-lspinstall"
+
